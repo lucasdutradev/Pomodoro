@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,7 +8,19 @@
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
+
 <body>
+    <section class="modal hidden">
+        <div class="box-modal">
+            <div class="count">
+                <div id="timer"></div>
+            </div>
+            <div class="set-button">
+                <button class="stop">Pause</button>
+                <button class="cancel">Cancel Count</button>
+            </div>
+        </div>
+    </section>
     <header>
         <h1>Pomodoro</h1>
     </header>
@@ -17,7 +30,7 @@
                 <span>+</span>
                 <span>-</span>
             </div>
-            <div class="timer">25</div>
+            <div id="Trabalho" class="timer">25</div>
             <h2>Trabalho</h2>
         </section>
         <section>
@@ -25,7 +38,7 @@
                 <span>+</span>
                 <span>-</span>
             </div>
-            <div class="timer">5</div>
+            <div id="Pausa" class="timer">5</div>
             <h2>Pausa</h2>
         </section>
         <section>
@@ -33,14 +46,15 @@
                 <span>+</span>
                 <span>-</span>
             </div>
-            <div class="timer">3</div>
+            <div id="Sessoes" class="timer">3</div>
             <h2>Sessoes</h2>
         </section>
     </main>
-    <button>Start</button>
+    <button class="start">Start</button>
     <footer></footer>
     <script src="app.js"></script>
 </body>
+
 </html>
 <!-- Pomodoro
 Trabalho
