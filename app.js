@@ -69,24 +69,27 @@ function startCount() {
         seconds = seconds < 10 ? "0" + seconds : seconds;
         display.innerHTML = minutes + ":" + seconds;
         if (--timer < 0) {
-            if (quantSessao % 2 === 0 && quantSessao > 0) {
+            if (quantSessao % 2 !== 0 && quantSessao > 0) {
+                display.style.borderColor = "yellow"
                 duration = 60 * Number(pausa);
                 timer = duration;
                 quantSessao--;
                 console.log(quantSessao);
                 console.log(duration)
-            }else if (quantSessao % 2 !== 0 && quantSessao > 0) {
+            }else if (quantSessao % 2 === 0 && quantSessao > 0) {
+                display.style.borderColor = "green"
                 duration = 60 * Number(minutesGap);
                 timer = duration;
                 quantSessao--;
                 console.log(quantSessao);
                 console.log(duration)
             }else if(quantSessao === 0) {
+                display.style.borderColor = "red"
                 duration = 0 * 0;
                 timer = duration;
             }
         }
-    }, 1000);
+    }, 50);
 
 
     cancelButton.addEventListener("click", () => {
