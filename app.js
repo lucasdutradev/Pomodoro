@@ -40,12 +40,15 @@ function callNumber(maxTrabalho, maxPausa, maxSessoes) {
     timer.forEach((valor) => {
         if (valor.id === "Trabalho") {
             valor.innerHTML = maxTrabalho.length
+            Number(valor.innerHTML) > 0 ? valor.classList.add("preenchendo") : valor.classList.remove("preenchendo");
         }
         if (valor.id === "Pausa") {
             valor.innerHTML = maxPausa.length
+            Number(valor.innerHTML) > 0 ? valor.classList.add("preenchendo") : valor.classList.remove("preenchendo")
         }
         if (valor.id === "Sessoes") {
             valor.innerHTML = maxSessoes.length
+            Number(valor.innerHTML) > 0 ? valor.classList.add("preenchendo") : valor.classList.remove("preenchendo")
         }
     })
 }
@@ -59,7 +62,9 @@ function startCount() {
     const display = document.querySelector('#timer');
 
     let quantSessao = Number(sessao)
+    if(quantSessao % 2 !== 0){quantSessao++}
     let duration = 60 * Number(minutesGap);
+    let isTrabalho = false
 
     let timer = duration, minutes, seconds;
     let regressive = setInterval(function () {
@@ -69,20 +74,20 @@ function startCount() {
         seconds = seconds < 10 ? "0" + seconds : seconds;
         display.innerHTML = minutes + ":" + seconds;
         if (--timer < 0) {
-            if (quantSessao % 2 !== 0 && quantSessao > 0) {
+            if (isTrabalho === false && quantSessao > 0) {
+                console.log(`is trabalho: ${isTrabalho}`)
+                isTrabalho = true
                 display.style.borderColor = "yellow"
                 duration = 60 * Number(pausa);
                 timer = duration;
                 quantSessao--;
-                console.log(quantSessao);
-                console.log(duration)
-            }else if (quantSessao % 2 === 0 && quantSessao > 0) {
+            }else if (isTrabalho && quantSessao > 0) {
+                console.log(`is trabalho: ${isTrabalho}`)
+                isTrabalho = false
                 display.style.borderColor = "green"
                 duration = 60 * Number(minutesGap);
                 timer = duration;
                 quantSessao--;
-                console.log(quantSessao);
-                console.log(duration)
             }else if(quantSessao === 0) {
                 display.style.borderColor = "red"
                 duration = 0 * 0;
@@ -93,6 +98,7 @@ function startCount() {
 
 
     cancelButton.addEventListener("click", () => {
+        display.style.borderColor = "green"
         modalBox.classList.add("hidden");
         clearInterval(regressive);
     });

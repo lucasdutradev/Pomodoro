@@ -67,8 +67,8 @@ div.box-modal{
 
 div.set-button button{
     cursor: pointer;
-    width: 100px;
-    height: 30px;
+    width: 150px;
+    height: 50px;
     border: none;
     border-radius: 7px;
     background-color: rgb(26, 0, 71);
@@ -94,7 +94,6 @@ header h1{
 main{
     width: 100%;
     max-width: 900px;
-    height: 500px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -147,13 +146,20 @@ div.timer{
     font-family: Arial, Helvetica, sans-serif;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
     font-weight: bold;
+    transition: 0.5s;
+}
+
+div.preenchendo{
+    background-color: rgb(69, 0, 189);
+    border-radius: 10px;
 }
 
 h2{
+    font-size: 15px;
     color: white;
     font-family: Arial, Helvetica, sans-serif;
-    font-weight: lighter;
-    text-shadow: 1px 1px 10px rgb(0, 31, 131);
+    font-weight: bold;
+    letter-spacing: 3px;
 }
 
 button.start{
@@ -170,4 +176,10 @@ button.start{
 
 button.start:hover{
     box-shadow: rgba(146, 46, 240, 0.4) 0px 5px, rgba(146, 46, 240, 0.3) 0px 10px, rgba(146, 46, 240, 0.2) 0px 15px, rgba(146, 46, 240, 0.1) 0px 20px, rgba(146, 46, 240, 0.05) 0px 25px;
+}
+
+@media screen and (min-width: 768px) {
+    main{
+        max-width: 500px;
+    }
 }
